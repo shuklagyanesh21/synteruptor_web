@@ -1,0 +1,142 @@
+h2 {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+#links {
+	margin-bottom: 10px;
+}
+
+#links a {
+	margin-left: 2em;
+}
+
+#stats {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	vertical-align: top;
+}
+
+#stats .field1, #stats .field2 {
+	vertical-align: top;
+}
+
+.field2 {
+	width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+	.field2 {
+		width: 400px;
+	}
+}
+@media screen and (max-width: 440px) {
+	.field2 {
+		width: 95%;
+	}
+}
+
+#ranking_box{
+	overflow: scroll;
+	font-size: small;
+}
+
+/*
+td, th {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-right: 1px solid #aaa;
+	text-align: center;
+}
+td {
+	border-top: 1px solid #DDD;
+}
+
+tr:nth-child(odd) {
+	background-color:#FFF;
+}
+tr:nth-child(even) {
+	background-color:#DDD;
+}
+*/
+/*
+th {
+	background: #CCC;
+	font-weight: bold;
+	border-bottom: 1px solid #aaa;
+}
+*/
+#custom {
+	border: 1px solid #aaa;
+	background: #EEF;
+	width: auto;
+	display: inline-block;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#custom p {
+	cursor: pointer;
+	margin: 0;
+}
+
+#sortlist {
+	background: #FFF;
+	border-collapse:collapse;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border: 1px solid black;
+}
+
+#sortlist td {
+	text-align:left;
+}
+#sortlist .score input {
+	width: 5em;
+	text-align: right;
+	background: inherit;
+}
+/*
+#ranking {
+	background: #FFF;
+	border-collapse:collapse;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+	width: 100%;
+}
+*/
+
+#ranking th:hover {
+	pointer-events: auto;
+	cursor:pointer ;
+}
+
+#ranking th.headerSortUp {
+	background-image: url(Arrow-up-navmenu.png);
+	background-color: #DDDDFF; 
+}
+#ranking th.headerSortDown {
+	background-image: url(Arrow-down-navmenu.png);
+	background-color: #FFDDDD; 
+}
+
+.trna {
+	background: #CFC;
+}
+
+.insignificant {
+	color: gray;
+}
+
+.sortvisible {
+	display: none;
+}
+
+#filter_box {
+	height: 100px;
+	width: 300px;
+}
+
+#filter_plot {
+	border: 1px solid black;
+}

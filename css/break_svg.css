@@ -1,0 +1,83 @@
+svg {
+	background: #FFF;
+}
+
+.break1, .break2, .break .gene {
+	fill-opacity: 0.75;
+	stroke: gray;
+	stroke-width: 1;
+}
+
+.break1, .genome1 .break .gene {
+	fill: #00F;
+}
+.break2, .genome2 .break .gene {
+	fill: #F00;
+}
+#genome1 .orthoCDS, .genome1 .gene .orthoCDS {
+	fill: #BBF;
+}
+#genome2 .orthoCDS, .genome2 .gene .orthoCDS {
+	fill: #FBB;
+}
+
+#genome1 .orthoCDS_in, #genome2 .orthoCDS_in, .orthoCDS_in {
+	stroke: black;
+	fill: #FFF;
+}
+
+.left_block1, .right_block1, .left_block2, .right_block2, .left .gene, .right .gene {
+	fill: #FFF;
+	stroke: #555;
+	stroke-width: 1;
+}
+
+.noCDS, .gene .noCDS {
+	fill: #0F0;
+	fill-opacity: 0.8;
+	stroke: #090;
+	stroke-opacity: 0.5;
+	stroke-width: 1;
+}
+
+.pseudo, .gene .pseudo {
+	fill: #3AE7CF;
+	fill-opacity: 0.8;
+	stroke: #090;
+	stroke-opacity: 0.5;
+	stroke-width: 1;
+}
+
+.orthoCDS, .gene .orthoCDS {
+	fill: #AAA;
+}
+.line_title {
+	fill: #000;
+}
+
+.genome_line {
+	stroke: black;
+	stroke-width: 2;
+}
+
+.break_linker {
+	stroke: #AAA;
+	stroke-width: 1;
+	stroke-dasharray: 5,10;
+}
+
+.draw_zone {
+	fill: #FFF;
+}
+
+.flank_zone {
+	fill: #EEE;
+}
+
+.flank_text {
+	text-anchor: middle;
+}
+
+.white {
+	fill: #FFF;
+}

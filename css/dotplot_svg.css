@@ -1,0 +1,78 @@
+#svgframe {
+	fill: white;
+}
+
+#drawing {
+	cursor: crosshair;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: black;
+	stroke-width: 1px;
+}
+
+.axis domain {
+	fill: white;
+}
+
+.svg_axes {
+	font-size: 1em;
+}
+
+.label {
+	font-size: 1em;
+}
+
+.break_rect {
+	stroke-width: 2;
+	stroke: darkred;
+	fill: red;
+	fill-opacity: 0.5;
+}
+
+.bselected {
+	stroke-width: 2;
+	stroke: #990;
+	fill: yellow;
+	fill-opacity: 0.7;
+}
+
+.break_circle {
+	stroke-width: 1;
+	stroke: red;
+	fill: red;
+	fill-opacity: 0.2;
+}
+
+.cselected {
+	stroke-width: 1;
+	stroke: #AA0;
+	fill: yellow;
+	fill-opacity: 0.7;
+}
+
+.ortho_points {
+	fill: lightblue;
+	/*
+	stroke: #aaa;
+	stroke-width: 1;
+	*/
+}
+
+.block_lines {
+	stroke-width: 2;
+	stroke: black;
+	stroke-opacity: 0.4;
+}
+
+.gpart_line {
+	stroke-width: 1;
+	stroke: lightgray;
+}
+
+.trna_line {
+	stroke-width: 1;
+	stroke: green;
+	stroke-opacity: 0.3;
+}

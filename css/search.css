@@ -1,0 +1,29 @@
+#results table {
+	background: #FFF;
+	border-collapse:collapse;
+	border: 2px solid black;
+}
+
+#results td, #results th {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-right: 1px solid #aaa;
+	text-align: center;
+}
+#results td {
+	border-top: 1px solid #DDD;
+}
+
+#results tr:nth-child(odd) {
+	background-color:#DDD;
+}
+#results tr:nth-child(even) {
+	background-color:#FFF;
+}
+
+#results th {
+	background: #CCC;
+	font-weight: bold;
+	border-bottom: 1px solid #aaa;
+}
+

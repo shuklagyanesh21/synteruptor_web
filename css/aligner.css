@@ -1,0 +1,91 @@
+#canvas {
+	margin-top: 10px;
+}
+svg {
+	background: #FFF;
+	border: 1px solid #AAA;
+}
+
+.break .gene {
+	fill-opacity: 0.75;
+	stroke: gray;
+	stroke-width: 1;
+}
+
+.genome1 .break .gene {
+	fill: #00F;
+}
+.genome2 .break .gene {
+	fill: #F00;
+}
+
+.genome1 .break .orthoCDS {
+	fill: #BBF;
+}
+.genome2 .break .orthoCDS {
+	fill: #FBB;
+}
+
+.genome1 .break .orthoCDS_in, .genome2 .break .orthoCDS_in {
+	stroke: black;
+	fill: #FFF;
+}
+
+.left .gene, .right .gene {
+	fill: #FFF;
+	stroke: #555;
+	stroke-width: 1;
+}
+
+.genome1 .break .noCDS, .genome2 .break .noCDS {
+	fill: #0F0;
+	fill-opacity: 0.8;
+	stroke: #090;
+	stroke-opacity: 0.5;
+	stroke-width: 1;
+}
+
+.genome1 .break .pseudo, .genome2 .break .pseudo {
+	fill: #3AE7CF;
+	fill-opacity: 0.8;
+	stroke: #090;
+	stroke-opacity: 0.5;
+	stroke-width: 1;
+}
+
+.line_title {
+	fill: #00A;
+}
+
+.genome_line {
+	stroke: black;
+	stroke-width: 2;
+}
+
+.break_linker {
+	stroke: #AAA;
+	stroke-width: 1;
+	stroke-dasharray: 5,10;
+}
+
+.draw_zone {
+	fill: #FFF;
+}
+
+.flank_zone {
+	fill: #EEE;
+}
+
+.flank_text {
+	text-anchor: middle;
+}
+
+.white {
+	fill: #FFF;
+}
+
+.legend_box {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}

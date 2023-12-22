@@ -1,0 +1,34 @@
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.axis text, .axis_legend {
+	font-size: 60%;
+}
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.current {
+    stroke: red;
+    stroke-width: 2;
+    fill: none;
+}
+
+.filter_switch:hover{
+    pointer-events: auto;
+	cursor:pointer ;
+}
+
+
+.information:hover{
+    pointer-events: auto;
+	cursor:pointer ;
+}

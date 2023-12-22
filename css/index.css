@@ -1,0 +1,31 @@
+/* #logo {
+	float: right;
+	margin-left: 15px;
+	width: 100px;
+	border: 1px solid black;
+} */
+
+#sitelink {
+	height: 40px;
+	width: 176px;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+.box {
+	border: 1px solid #AAA;
+	background: #CCF;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	width: 20em;
+}
+
+
+#site_description {
+	display: inline-block;
+	/* width: 80%; */
+}

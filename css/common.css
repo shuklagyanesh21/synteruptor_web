@@ -1,0 +1,447 @@
+body {
+        color: #001;
+        background-color : #fff;
+}
+
+h4 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.information {
+	vertical-align: super;
+	font-size: 85%;
+	color: #9A009E;
+}
+.information::before {
+	content: "(";
+}
+.information::after {
+	content: ")";
+}
+
+#entete {
+    /* position: fixed; */
+	z-index: 10;
+    top: 0;
+    left : 0;
+    font-size : 1em;
+	height: 4em;
+    font-weight : bold;
+    /* width : 100%; */
+    /* padding-bottom : 0px; */
+    /* border-bottom : 1px solid #ddf ; */
+	/* background: #EEF; */
+	background: linear-gradient(90deg, #8360c3, #2ebf91); 
+	text-align: center;
+	vertical-align: middle;
+	padding: 1em;
+	margin-left: 205px;
+}
+
+#entete a {
+    text-decoration: none;
+}
+
+#sitelink {
+	background: url("Synteruptor_logo_title.png") no-repeat scroll 0 0 transparent;
+	height: 2.5em;
+	width: 11em; /*1 pour 4.4*/
+	background-size: contain;
+	display: inline-block;
+	border: 1px solid black;
+}
+
+#entete_links {
+	margin-left: 2em;
+	padding: 0.5em;
+	/* position: absolute; */
+	/* background: #EEF; */
+}
+/* 
+@media screen and (max-width: 600px) {
+	#entete_links {
+		margin-left: 2px;
+	}
+} */
+
+/* Sidebar inspired by https://www.w3schools.com/howto/howto_css_sidebar_responsive.asp*/
+
+.mynav-logo-banner {
+    margin: 25%;
+}
+#bioi2_menu_logo {
+    width: 100%;
+}
+
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    font-family: sans-serif;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a:hover { 
+    background-color: #555;
+    color: white;
+}
+
+.sidebar a:focus {
+    background-color: #04AA6D;
+}
+
+
+#backtop {
+	position: fixed;
+	top: 0;
+	left: 5px;
+}
+
+
+#tail {
+	display: inline-block;
+	/* width: 200px; */
+	vertical-align: top;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 205px;
+}
+
+#tail ul {
+	list-style-type: none;
+	margin-top: none;
+}
+#tail ul li {
+	display: inline;
+	margin-right: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+	#site_description, #tail {
+		width: 100%;
+	}
+}
+
+#content {
+	/* background-color: palegoldenrod; */
+	margin-left: 205px;
+	/* margin-top: 3em; */
+	z-index: 1;
+}
+
+.infobox {
+	border: 1px solid #aaa;
+	padding: 5px;
+	font-size: 90%;
+	background: #EEF;
+	margin-top: 10px;
+}
+
+.index_box {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border: 1px solid #aaa;
+	padding: 10px;
+	box-shadow: 0px 0px 5px #AAA;
+}
+
+
+a.table-row {
+	text-decoration: none;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+@media screen and (max-width: 800px) {
+	#databases {
+		width: 100%;
+		overflow-x: auto;
+	}
+}
+
+/*
+#databases table {
+	border-spacing: 3px;
+	border-collapse: separate;
+}
+
+#databases td, #databases tr, #databases th, #databases .table-row {
+	border: none;
+}
+*/
+
+#databases td {
+	padding: 6px;
+}
+
+
+
+/* TABLES */
+table {
+	background: #FFF;
+	border-collapse:collapse;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+}
+.table-row {
+	display: table-row;
+}
+
+td, th, .table-row {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-right: 1px solid #aaa;
+	text-align: center;
+}
+td, .table-row {
+	border-top: 1px solid #DDD;
+}
+
+tr:nth-child(odd), .table-row:nth-child(odd) {
+	background-color:#FFF;
+}
+tr:nth-child(even), .table-row:nth-child(even) {
+	background-color: #D4D9FF;
+}
+
+tr td:first-child, tr th:first-child, .table-row:first-child {
+	border-left:0;
+}
+
+tr td:last-child, tr th:last-child, .table-row:last-child {
+	border-right:0;
+}
+
+tbody tr:last-child td, tbody tr:last-child th, tbody .table-row:last-child {
+	border-bottom: 0;
+}
+tbody tr:first-child td, tbody tr:first-child th, tbody .table-row:first-child {
+	border-top: 0;
+}
+
+th {
+	background: #FFD660;
+	font-weight: bold;
+	border-bottom: 1px solid #aaa;
+}
+
+thead th {
+	border-top:0;
+}
+
+.search {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.search_button {
+	border: 1px solid rgb(127, 127, 181);
+	background-color: #5F65E3;
+	color: #FFF;
+	font-size: 0.9em;
+	/*padding: 1px;*/
+}
+.search a {
+	text-decoration: none;
+}
+
+.search a:hover {
+	text-decoration: none;
+}
+
+.search a:hover .search_button {
+	text-decoration: none;
+	background-color: #005;
+}
+
+.blast_col {
+	padding: 0px;
+	width: 1em;
+}
+
+.line_selected {
+	background: #FF5 !important;
+}
+
+.error {
+	color: red;
+	margin-left: 10px;
+}
+
+.loc_length {
+        margin-right:0.2em;
+        text-align: right;
+}
+.gcbox {
+	margin: auto;
+        width: 50%;
+        text-align: right;
+}
+.gc_vhigh {
+	color: #0D0;
+	font-weight: bold;
+}
+.gc_high {
+	color: #5D5;
+}
+.gc_zero {
+	color: #777;
+}
+.gc_low {
+	color: #F55;
+}
+.gc_vlow {
+	color: #F00;
+	font-weight: bold;
+}
+
+/* BOXES */
+.centered_box {
+	margin-left: auto;
+	margin-right: auto;
+	/* width: 1200px; */
+	padding: 10px;
+}
+@media screen and (max-width: 1200px) {
+	.centered_box {
+		width: 90%;
+		border: 0;
+	}
+}
+
+.button_link {
+	border: 1px solid #aaa;
+	background: #86F686;
+	padding: 10px;
+	margin: 5px;
+	color: black;
+	text-align: center;
+	font-weight: bold;
+}
+
+.button_container, .button_link {
+	width: 536px;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media screen and (max-width: 800px) {
+	.button_container, .button_link {
+	width: 90%;
+	}
+}
+
+.button_container a {
+	text-decoration: none;
+}
+
+.button_container a:hover {
+	text-decoration: underline;
+}
+
+.filter_switch {
+	font-size: 80%;
+	margin-left: 10px;
+}
+
+.field1 {
+	display: inline-block;
+	background: #CFC;
+	border: 1px solid #555;
+	padding: 5px;
+	margin-bottom: 10px;
+	text-align:center;
+}
+.field2 {
+	display: inline-block;
+	background: #EEE;
+	border: 1px solid #555;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+#filter_box {
+	height: 100px;
+}
+
+#filter_plot {
+	border: 1px solid black;
+	background: white;
+}
+
+.legend_ortho {
+	border: 1px solid #aaa;
+	background: #FFF;
+	color: black;
+}
+.legend_ortho1 {
+	border: 1px solid #aaa;
+	background: #BBF;
+	color: black;
+}
+.legend_noortho1 {
+	border: 1px solid #aaa;
+	background: #00F;
+	color: white;
+}
+.legend_ortho2 {
+	border: 1px solid #aaa;
+	background: #FBB;
+	color: black;
+}
+.legend_noortho2 {
+	border: 1px solid #aaa;
+	background: #F00;
+	color: white;
+}
+.legend_pseudo {
+	background: #3AE7CF;
+	border: 1px solid #090;
+}
+.legend_other {
+	background: #0f0;
+	border: 1px solid #090;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 900px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      overflow: auto;
+      white-space: nowrap;
+    }
+    .sidebar a {
+        display: inline-block;
+        text-align: center;
+    }
+	#entete {
+		margin-left: 0.5%;
+	}
+	#tail {
+		margin-left: 0.5%;
+	}
+	#content {
+		margin-left: 0.5%;
+	}
+    .mynav-logo-banner {
+        margin: 0.5%;
+        width:min-content;
+    }
+    #bioi2_menu_logo {
+        width: 50px;
+    }
+  }

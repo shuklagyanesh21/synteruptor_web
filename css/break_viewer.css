@@ -1,0 +1,293 @@
+#intro {
+	margin-bottom: 10px;
+}
+
+#links a {
+	margin-left: 2em;
+}
+
+#canvas {
+	left: 0;
+	width: auto;
+	/*
+	margin-left: 1em;
+	margin-right: 1em;
+	*/
+}
+
+.top_canvas {
+	position: fixed;
+	top: 1.4em;
+}
+
+#canvas svg {
+	border: 2px solid #555;
+	/*padding: 1em;*/
+	margin-bottom: 1em;
+	background: #FFF;
+	/*box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);*/
+}
+
+/* Only use this style in the html page, not in the svg file */
+.rect_select {
+	fill: #FF5 !important;
+	fill-opacity: 1 !important;
+	stroke: gray !important;
+}
+
+.line_select {
+	background: #FF5 !important;
+}
+
+.rect_clicked {
+	fill: #FF0 !important;
+	fill-opacity: 1 !important;
+	stroke: black !important;
+	stroke-width: 2 !important;
+}
+
+.line_clicked {
+	background: #FF0 !important;
+	border: 2px solid black;
+}
+
+.invisible {
+	border: #EEE !important;
+	background: #EEE !important;
+}
+
+
+table {
+	background: #FFF;
+	border-collapse:collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#breaks, #left_block, #right_block {
+	background: inherit;
+	width: 100%;
+	border: 0;
+}
+#breaks > tbody > tr > td, #left_block > tbody > tr > td, #right_block > tbody > tr > td {
+	vertical-align: top;
+	width: 50%;
+	border: 0;
+}
+
+#break table {
+	background: #FFF;
+}
+
+#break td {
+	vertical-align: top;
+	text-align: center;
+}
+
+#break th, #break td {
+	padding: 0.5em;
+}
+
+.genes th, .genes td {
+	border-left: 1px solid #aaa;
+	border-bottom: 1px solid #ddd;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.genes th {
+	background: #EEE;
+}
+
+.genes td {
+	text-align: left !important;
+}
+
+.genes tr:nth-child(odd) {
+	background-color:#FFF;
+}
+.genes tr:nth-child(even) {
+	background-color:#DDD;
+}
+
+.genome_header th {
+	background: #DDD;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+
+#sp1_table th {
+	background: #AAF;
+}
+#sp2_table th {
+	background: #FAA;
+}
+
+.genes tr.trna {
+	background: #AFA;
+}
+.ortho_in {
+	border: 2px solid black;
+	color: black;
+}
+/*
+.ortho_out {
+	background: #AAA;
+}
+*/
+
+.putative, td.zero {
+	color: #999;
+}
+
+caption {
+	font-weight: bold;
+	font-size: 2em;
+	text-align: center;
+}
+
+#tab_1, #tab_2 {
+	width: auto;
+	margin-top: 0.5em;
+}
+
+.addition {
+	font-size: 0.85em;
+	color: #555;
+	background-color: #F8F8F8;
+	border-top: 1px solid #AAA;
+	margin-top: 5px;
+	max-height:3em;
+	overflow-y: auto;
+	overflow-x: none;
+}
+
+table a {
+	text-decoration: none;
+}
+
+table a:hover {
+	text-decoration: underline;
+}
+
+.addition a {
+	color: inherit;
+}
+
+/*
+#tab_1, #tab_2 {
+	border: 2px solid black;
+}
+#tab_1 th, #tab_2 th {
+	border-bottom: 2px solid black;
+}
+*/
+
+/*
+a[href^="//"]:after, 
+a[href^="http://"]:after, 
+a[href^="https://"]:after {
+  content: url(Icon_External_Link.png);
+  margin: 0 0 0 5px;
+}
+*/
+
+#container {
+	text-align:center;
+}
+
+#ranking {
+	border: 1px solid black;
+	width: 100%;
+}
+
+#ranking td, #ranking th {
+	padding: 0.3em;
+	border: 1px solid #aaa;
+	text-align: center;
+}
+
+#ranking th {
+	background: #DDD;
+	font-weight: bold;
+}
+
+th.headerSortUp {
+	background-image: url(Arrow-up-navmenu.png);
+	background-color: #3399FF; 
+}
+th.headerSortDown {
+	background-image: url(Arrow-down-navmenu.png);
+	background-color: #3399FF; 
+}
+
+#stats {
+	margin-bottom: 1em;
+}
+
+#left1, #break1, #right1 {
+	width: 100%;
+	border: 2px solid #00A;
+}
+
+#left2, #break2, #right2 {
+	width: 100%;
+	border: 2px solid #A00;
+}
+
+#left1 .genome_header th, #right1 .genome_header th {
+	background: #AAF;
+}
+
+#left2 .genome_header th, #right2 .genome_header th {
+	background: #FAA;
+}
+
+#break1 .genome_header th {
+	background: #00A;
+	color: white;
+}
+#break2 .genome_header th {
+	background: #A00;
+	color: white;
+}
+
+#infos, #infos_similar {
+	border: 1px solid #AAA;
+	background-color: #FFF;
+	margin:0 auto;
+}
+#infos_similar {
+	margin-bottom: 15px;
+}
+
+#infos td, #infos_similar td {
+	vertical-align: top;
+	padding: 10px;
+	text-align: left;
+}
+#infos td {
+	width: 50%;
+	border: 1px solid #AAA;
+}
+
+
+.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+	fill: blue;
+}
+
+.link {
+	stroke: #AAA;
+	stroke-width: 1;
+}
+
+.strand_sign {
+	margin-left: auto;
+	margin-right: auto;
+        width: 50%;
+        text-align: center;
+}
+
