@@ -1,3 +1,5 @@
+//import { check_data_error } from "./utils.js";
+
 function print_db() {
 	pars = {};
 	pars.type = 'databases';
@@ -5,10 +7,24 @@ function print_db() {
 	console.log(str);
 	console.log(format_url(urls.get_data, pars));
 	$.getJSON( urls.get_data, pars, function(data) {
+            error_msg = check_data_error(data);
+            if (error_msg) {
+                $( "#databases" ).append( error_msg );
+            } else {
 		print_db_table(data);
+            }
 	}).fail(function(){
 		console.log("Failed databases retrieval");
 	});
+}
+
+function check_data_error( data ) {
+    error_msg = ""
+    if ("outcome" in data && data["outcome"] == false) {
+        console.log("Error occurred: " + data["details"]);
+        error_msg = $("<p />").text("An error occurred: " + data["message"] + ". Check the console for more details.");
+    }
+    return error_msg;
 }
 
 function get_dbs() {
