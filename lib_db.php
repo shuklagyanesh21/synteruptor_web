@@ -9,7 +9,7 @@ $dbdir = get_setting("db_dir");
 // Check variable type (convert if necessary)
 function parseVal($dat) {
     foreach ($dat as $key => $val) {
-        if ( ctype_digit( $val ) ) {
+        if ( ctype_digit((string)$val) ) {
             $dat[ $key ] = intval( $val );
         } elseif (is_numeric($val)) {
             $dat[ $key ] = floatval( $val );
