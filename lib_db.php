@@ -30,8 +30,11 @@ function die_msg($message = '', $details = '') {
 function get_available_dbs_list( $all = true , $authorised = array()) {
 	global $dbdir;
 	$files = scandir($dbdir);
-	// remove dirs
 	$hfiles = array();
+	if (!$files) {
+		return $hfiles;
+	}
+	// remove dirs
 	for ($i = 0 ; $i < count($files); $i++) {
 		if ($files[$i] == '.'
 			or $files[$i] == '..'
