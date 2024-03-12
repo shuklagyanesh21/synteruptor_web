@@ -186,7 +186,7 @@ function update_table(data) {
 		}
 		$table.append($body_tag);
 		$table.show();
-		$table.stickyTableHeaders( {'fixedOffset': $("#entete")} );
+		$table.stickyTableHeaders();
 		$table.tablesorter();
 	
 		$('tr').hover(function(e) {
