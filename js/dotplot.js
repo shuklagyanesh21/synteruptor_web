@@ -24,20 +24,6 @@ init_pars( {
 	'breakid': '',
 	'strict': 10
 });
-const goc = {
-    left: 80,
-    right: 40,
-    width: 200,
-    "top": 20,
-    bottom: 40,
-    height: 200
-};
-const dot_margin = {
-    "top": 30,
-    right: 60,
-    bottom: goc.top + goc.bottom,
-    left: goc.left + goc.right
-};
 var margin = {};
 
 var scales = {};
@@ -99,6 +85,20 @@ function draw_plot() {
         if (win_height == 0) {
                 win_height = Math.floor( $( window ).height() * height_percent );
         }
+	const goc = {
+		left: 80,
+		right: 40,
+		width: Math.min(win_width * 0.2, 200),
+		"top": 20,
+		bottom: 40,
+		height: Math.min(win_height * 0.2, 200)
+	};
+	const dot_margin = {
+		"top": 30,
+		right: 60,
+		bottom: goc.top + goc.bottom,
+		left: goc.left + goc.right
+	};
 	var offset = $("#canvas").offset();
 
 	var stats = {
