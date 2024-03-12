@@ -464,8 +464,21 @@ function get_ranking_data($dbh) {
 	$limit = ' LIMIT 10000';
 	$condition = join(' AND ', $cond);
 	$order = ' ORDER BY ' . join(', ', $ord);
-	$query = 'SELECT *, (real_size2 * 100.0 / (real_size1 + real_size2)) AS diff FROM breaks_ranking LEFT JOIN breaks_all ON breaks_ranking.breakid=breaks_all.breakid WHERE ' . $condition . $order . $limit;
+	$select = 'SELECT breaks_ranking.*, breaks_all.*';
+	$select .= ', (real_size2 * 100.0 / (real_size1 + real_size2)) AS diff ';
+	$select .= ', gleft1.loc_start AS loc_start1';
+	$select .= ', gright1.loc_end AS loc_end1';
+	$select .= ', gleft2.loc_start AS loc_start2';
+	$select .= ', gright2.loc_end AS loc_end2';
+	$from = 'FROM breaks_ranking ';
+	$joins = 'LEFT JOIN breaks_all ON breaks_ranking.breakid=breaks_all.breakid ';
+	$joins .= 'LEFT JOIN genes gleft1 ON (pnum_all_left1 = gleft1.pnum_all and breaks_all.sp1 = gleft1.sp) ';
+	$joins .= 'LEFT JOIN genes gright1 ON (pnum_all_right1 = gright1.pnum_all and breaks_all.sp1 = gright1.sp) ';
+	$joins .= 'LEFT JOIN genes gleft2 ON (pnum_all_left2 = gleft2.pnum_all and breaks_all.sp2 = gleft2.sp) ';
+	$joins .= 'LEFT JOIN genes gright2 ON (pnum_all_right2 = gright2.pnum_all and breaks_all.sp2 = gright2.sp) ';
+	$query = "$select $from $joins WHERE $condition $order $limit";
 	return get_db_data($dbh, $query, $vals);
+	return $query;
 }
 
 /************************************************************

@@ -48,14 +48,14 @@ function to_antismash(data) {
 	tool = {
 		"name": "synteruptor",
 		"version": synteruptor_version,
-		"description": "",
+		"description": "Synteny breaks explorer",
 	};
 	records = [];
 	for (var br of data) {
 		subregions = {
 			"label": "break_" + br["breakid"],
-			// "start": br["nuc_start1"],
-			// "end": br["nuc_end1"],
+			"start": br["loc_start1"],
+			"end": br["loc_end1"],
 		}
 		record = {
 			"name": br["gpart1"],
