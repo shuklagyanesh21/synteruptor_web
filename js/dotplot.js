@@ -563,18 +563,21 @@ function draw_plot() {
         // Add GOC labels
 	var texts = svg.append("g");
 	
+	// Horizontal GOC label
 	texts.append("text")
 		.attr("class", "y_goc label")
 		.attr("text-anchor", "middle")
-		.attr("x", 180)
-		.attr("y", 485)
+		.attr("x", (margin.left * 0.8))
+		.attr("y", win_height - margin.bottom * 0.2)
 		.text( "GOC" );
+
+	// Vertical GOC label
 	texts.append("text")
 		.attr("class", "x_goc label")
 		.attr("text-anchor", "middle")
-                .attr("y", margin.left - 40)
-		.attr("x", -567)
-		.attr("transform", "rotate(-90)")
+        .attr("y", -margin.left * 0.3)
+        .attr("x", win_height - margin.bottom * 0.8)
+		.attr("transform", "rotate(90)")
 		.text( "GOC" );
 // #####                
                 
