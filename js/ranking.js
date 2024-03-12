@@ -1,5 +1,6 @@
 var cached_data = {};
 var cached_data_ajax = null;
+synteruptor_version = "1.0";
 
 init_pars( {
 	"sp1" : "",
@@ -40,6 +41,47 @@ function prepare_csv(data) {
 	update_csv(data);
 	$("#csv_link").off( "click" );
 	$("#csv_link").trigger( "click" );
+}
+
+// Handle antismash download link
+function to_antismash(data) {
+	tool = {
+		"name": "synteruptor",
+		"version": synteruptor_version,
+		"description": "",
+	};
+	records = [];
+	for (var br of data) {
+		subregions = {
+			"label": "break_" + br["breakid"],
+			// "start": br["nuc_start1"],
+			// "end": br["nuc_end1"],
+		}
+		record = {
+			"name": br["gpart1"],
+			"subregions": subregions,
+		}
+		records.push(record);
+	}
+	json_data = {
+		"tool": tool,
+		"records": records,
+	}
+	return JSON.stringify(json_data, null, 4);
+}
+
+function update_antismash_link(data) {
+	$('#antismash_link').attr( "href", "" );
+	$('#antismash_link').attr( "download", "" );
+	json_data = to_antismash(data);
+	$('#antismash_link').attr('download', 'breaks_table_antismash.json');
+	$('#antismash_link').attr('href', 'data:application/csv;charset=utf-8,' + encodeURIComponent(json_data));
+}
+
+function prepare_antismash_link(data) {
+	update_antismash_link(data);
+	$("#antismash_link").off( "click" );
+	$("#antismash_link").trigger( "click" );
 }
 
 // Links
@@ -215,6 +257,12 @@ function update_page(init_data) {
 			.attr( "download", "" )
 			.on( "click", function() {
 			prepare_csv( data );
+		});
+		$( "#antismash_link" )
+			.attr( "href", "" )
+			.attr( "download", "" )
+			.on( "click", function() {
+			prepare_antismash_link( data );
 		});
 	}
 }

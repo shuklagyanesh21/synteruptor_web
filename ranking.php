@@ -56,7 +56,8 @@ print_header("viewer", "List of the genomic islands");
 				<button id="reset_sort">Reset values</button>
 			</div>
 		</div>
-		<a id="csv_link" href="">Download Table (CSV)</a><br />
+		<a id="csv_link" href="">Download Table (CSV)</a>
+		<a id="antismash_link" href="">Download antismash link (JSON)</a><br />
 		<span><span id="nbreaks">No</span> breaks</span>
 		<div id="loading" style="display:inline;"></div>
 		<div id="ranking_box">
