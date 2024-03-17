@@ -24,20 +24,6 @@ init_pars( {
 	'breakid': '',
 	'strict': 10
 });
-const goc = {
-    left: 80,
-    right: 40,
-    width: 200,
-    "top": 20,
-    bottom: 40,
-    height: 200
-};
-const dot_margin = {
-    "top": 30,
-    right: 60,
-    bottom: goc.top + goc.bottom,
-    left: goc.left + goc.right
-};
 var margin = {};
 
 var scales = {};
@@ -99,6 +85,20 @@ function draw_plot() {
         if (win_height == 0) {
                 win_height = Math.floor( $( window ).height() * height_percent );
         }
+	const goc = {
+		left: 80,
+		right: 40,
+		width: Math.min(win_width * 0.2, 200),
+		"top": 20,
+		bottom: 40,
+		height: Math.min(win_height * 0.2, 200)
+	};
+	const dot_margin = {
+		"top": 30,
+		right: 60,
+		bottom: goc.top + goc.bottom,
+		left: goc.left + goc.right
+	};
 	var offset = $("#canvas").offset();
 
 	var stats = {
@@ -487,9 +487,8 @@ function draw_plot() {
 	if (get_par( 'show_goc' ) == false) {
 		gocx_container.style({ "display": "none" });
 		gocy_container.style({ "display": "none" });
-	}
-
-        // FIlter data
+	} else {
+        // Filter data
         const goc1 = data.gocs[get_par("sp1")].filter(function(d) { return d.pos >= get_par( 'start1' ) && d.pos <= get_par( 'end1' ) });
         const goc2 = data.gocs[get_par("sp2")].filter(function(d) { return d.pos >= get_par( 'start2' ) && d.pos <= get_par( 'end2' ) });
 
@@ -517,68 +516,70 @@ function draw_plot() {
             .attr("stroke-width", "2")
             .attr("fill", "none");
 
-	// Add GOC X axes
-	const gocx_axes = gocx_container.append("g")
-		.attr( "name", "gocx_axes" )
-		.attr( "class", "svg_axes" )
+		// Add GOC X axes
+		const gocx_axes = gocx_container.append("g")
+			.attr( "name", "gocx_axes" )
+			.attr( "class", "svg_axes" )
 
-	const gocx_xAxis = d3.svg.axis().scale( scales.x ).orient( "bottom" );
-	gocx_axes.append("g")
-		.attr("transform", "translate(" + 0 + "," + goc.height + ")")
-		.attr("class", "x axis")
-		.call(gocx_xAxis);
+		const gocx_xAxis = d3.svg.axis().scale( scales.x ).orient( "bottom" );
+		gocx_axes.append("g")
+			.attr("transform", "translate(" + 0 + "," + goc.height + ")")
+			.attr("class", "x axis")
+			.call(gocx_xAxis);
 
-	const gocx_yAxis = d3.svg.axis().scale( gocx_scale ).orient( "left" );
-	gocx_axes.append("g")
-		.attr("class", "y axis")
-		.call(gocx_yAxis);
-	const gocx_yAxis_right = d3.svg.axis().scale( gocx_scale ).orient( "right" );
-	gocx_axes.append("g")
-		.attr("transform", "translate(" + (win_width - margin.left - margin.right) + "," + 0 + ")")
-		.attr("class", "y axis")
-		.call(gocx_yAxis_right);
+		const gocx_yAxis = d3.svg.axis().scale( gocx_scale ).orient( "left" );
+		gocx_axes.append("g")
+			.attr("class", "y axis")
+			.call(gocx_yAxis);
+		const gocx_yAxis_right = d3.svg.axis().scale( gocx_scale ).orient( "right" );
+		gocx_axes.append("g")
+			.attr("transform", "translate(" + (win_width - margin.left - margin.right) + "," + 0 + ")")
+			.attr("class", "y axis")
+			.call(gocx_yAxis_right);
 
-	// Add GOC Y axes
-	const gocy_axes = gocy_container.append("g")
-		.attr( "name", "gocy_axes" )
-		.attr( "class", "svg_axes" )
+		// Add GOC Y axes
+		const gocy_axes = gocy_container.append("g")
+			.attr( "name", "gocy_axes" )
+			.attr( "class", "svg_axes" )
 
-	const gocy_yAxis = d3.svg.axis().scale( scales.y ).orient( "left" );
-	gocy_axes.append("g")
-		.attr("class", "y axis")
-		.call(gocy_yAxis);
+		const gocy_yAxis = d3.svg.axis().scale( scales.y ).orient( "left" );
+		gocy_axes.append("g")
+			.attr("class", "y axis")
+			.call(gocy_yAxis);
 
-	const gocy_xAxis = d3.svg.axis().scale( gocy_scale ).orient( "bottom" );
-	gocy_axes.append("g")
-		.attr("transform", "translate(" + 0 + "," + (win_height - margin.top - margin.bottom) + ")")
-		.attr("class", "y axis")
-		.call(gocy_xAxis);
+		const gocy_xAxis = d3.svg.axis().scale( gocy_scale ).orient( "bottom" );
+		gocy_axes.append("g")
+			.attr("transform", "translate(" + 0 + "," + (win_height - margin.top - margin.bottom) + ")")
+			.attr("class", "y axis")
+			.call(gocy_xAxis);
 
-	const gocy_xAxis_top = d3.svg.axis().scale( gocy_scale ).orient( "top" );
-	gocy_axes.append("g")
-		.attr("class", "y axis")
-		.call(gocy_xAxis_top);
+		const gocy_xAxis_top = d3.svg.axis().scale( gocy_scale ).orient( "top" );
+		gocy_axes.append("g")
+			.attr("class", "y axis")
+			.call(gocy_xAxis_top);
 
-// #### EDIT IN PROGRESS               
-        // Add GOC labels
-	var texts = svg.append("g");
-	
-	texts.append("text")
-		.attr("class", "y_goc label")
-		.attr("text-anchor", "middle")
-		.attr("x", 180)
-		.attr("y", 485)
-		.text( "GOC" );
-	texts.append("text")
-		.attr("class", "x_goc label")
-		.attr("text-anchor", "middle")
-                .attr("y", margin.left - 40)
-		.attr("x", -567)
-		.attr("transform", "rotate(-90)")
-		.text( "GOC" );
-// #####                
+		// Add GOC labels
+		var texts = goc_container.append("g");
+		
+		// Horizontal GOC label
+		texts.append("text")
+			.attr("class", "y_goc label")
+			.attr("text-anchor", "middle")
+			.attr("x", (margin.left * 0.8))
+			.attr("y", win_height - margin.bottom * 0.2)
+			.text( "GOC" );
+
+		// Vertical GOC label
+		texts.append("text")
+			.attr("class", "x_goc label")
+			.attr("text-anchor", "middle")
+			.attr("y", -margin.left * 0.3)
+			.attr("x", win_height - margin.bottom * 0.8)
+			.attr("transform", "rotate(90)")
+			.text( "GOC" );
+	}
                 
-	// When the graph is drawn, prepare a file to dowload it
+	// When the graph is drawn, prepare a file to download it
 	update_download_link( svg_style );
 	update_stats( stats );
 }
@@ -950,11 +951,10 @@ function show_hide_button( parname, elementid, label ) {
 		}
 		update_permalink();
 
-                if (elementid == "goc_lines") {
-                    console.log("Rebuild dotplot after after toggling GOC");
-                    draw_plot();
-                }
-	
+		if (elementid == "goc_lines") {
+			console.log("Rebuild dotplot after after toggling GOC");
+			draw_plot();
+		}
 	});
 }
 
