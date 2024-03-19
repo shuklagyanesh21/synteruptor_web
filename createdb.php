@@ -32,6 +32,7 @@ print_header("upload");
 <h2><?php site_name(); ?> database creator</h2>
 <p>This page helps to create a <?php site_name(); ?> database (in sqlite3 format) based on genomes uploaded by the user.</p>
 <p> The final database can be downloaded for local analyzis, or it can be explored on the <?php site_name(); ?> site.</p>
+<p>Alternatively you can <a href="upload_db.php">upload a Synteruptor database</a> directly if you have generated a database yourself.</p>
 <?php
 
 if (isset($_GET["id"])) {
