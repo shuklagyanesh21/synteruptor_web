@@ -32,18 +32,34 @@ if (!isset($_FILES["new_db"])) {
 			$errormsg .= "<li>Wrong file type for $name (only .sqlite allowed)</li>";
 			$nerrors++;
 		} else {
-			if ( move_uploaded_file($tmp_name, $final_db_path) ) {
-				$uploaded_array[] .= "Uploaded file '".$name."'.<br/>\n";
-			} else {
-				$errormsg .= "<li>Could not move uploaded file '".$tmp_name."' to '".$name."'<li>";
-				$nerrors++;
+			# Just in case, to avoid collisions
+			$num = 1;
+			$new_id = $id;
+			$new_db_path = $final_db_path;
+			while(file_exists($final_db_path)) {
+				$new_id = $id . "_" . $num;
+				$new_db_path = str_replace("$id.sqlite", "$new_id.sqlite", $final_db_path);
+				$num++;
+				if ($num > 10) {
+					$errormsg .= "<li>ID collision detected.<li>";
+					$nerrors++;
+					break;
+				}
+			}
+			if ($nerrors == 0) {
+				if ( move_uploaded_file($tmp_name, $new_db_path) ) {
+					$uploaded_array[] .= "Uploaded file '".$name."'.<br/>\n";
+				} else {
+					$errormsg .= "<li>Could not move uploaded file '".$tmp_name."' to '".$name."'<li>";
+					$nerrors++;
+				}
 			}
 		}
 	}
 }
 
 if ($nerrors == 0) {
-	header("Location: $builder?id=$id");
+	header("Location: $builder?id=$new_id");
 } else {
 	echo "Errors, please check:<ul>$errormsg</ul>\n";
 	echo "<a href='$builder?id=$id'>Go back</a>";
