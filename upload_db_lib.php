@@ -6,7 +6,7 @@ require_once("common.php");
 $settings = parse_ini_file("settings.ini");
 $max_size = ini_get('post_max_size');
 $dbdir = get_setting("db_dir"); #"db";
-$basedir = get_setting("upload_dir");
+$basedir = get_setting("upload_dir");	# Make sure this is set with the correct permissions
 $builder = "upload_db.php";
 $id = get_id();
 $final_db_path = "";
@@ -33,9 +33,9 @@ function check_id($id) {
 	if ( !preg_match( '/^[A-z0-9]+$/', $id ) ) {
 		return false;
 	}
-	# Check	if the directory actually exists
+	# Check	if the file actually exists
 	global $basedir;
-	if ( !file_exists( $basedir . "/" . $id . "/" ) ) {
+	if ( !file_exists( $basedir . "/" . $id ) ) {
 		return false;
 	}
 	return true;

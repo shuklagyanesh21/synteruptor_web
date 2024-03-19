@@ -4,34 +4,24 @@
 <?php
 require_once('upload_db_lib.php');
 
-function temp_dir() {
+function temp_file() {
 	global $basedir;
 	if (!$basedir) {
 		return null;
 	}
-	mkdir($basedir);
-	chmod($basedir, 0777);
 	
-	$tempdir = tempnam($basedir, 'mgn');
-	if (is_file($tempdir)) {
-		unlink($tempdir);
-		mkdir($tempdir);
-		if (is_dir($tempdir)) {
-			chmod($tempdir, 0777);
-			$id = basename($tempdir);
-			if(!in_array($id,$_SESSION["db_ids"])){$_SESSION["db_ids"][]=$id;}
-			return $id;
-		}
-	}
-	return null;
+	$tempfile = tempnam($basedir, 'mgn');
+	$id = basename($tempfile);
+	if(!in_array($id,$_SESSION["db_ids"])){$_SESSION["db_ids"][]=$id;}
+	return $id;
 }
 
 // Create an empty folder with a unique random name
-$tempdir = temp_dir();
+$tempfile = temp_file();
 
-if (isset($tempdir)) {
+if (isset($tempfile)) {
 	// Use the dir name as an id
-	header("Location: $builder?id=$tempdir");
+	header("Location: $builder?id=$tempfile");
 } else {
 	echo "Error: invalid generated id. Please refresh the page.";
 }
