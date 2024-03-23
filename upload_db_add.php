@@ -31,6 +31,9 @@ if (!isset($_FILES["new_db"])) {
 		if (!preg_match("/\.sqlite?$/", $name)) {
 			$errormsg .= "<li>Wrong file type for $name (only .sqlite allowed)</li>";
 			$nerrors++;
+		} else if (filesize($tmp_name) == 0) {
+			$errormsg .= "<li>File is empty</li>";
+			$nerrors++;
 		} else {
 			# Just in case, to avoid collisions
 			$num = 1;
