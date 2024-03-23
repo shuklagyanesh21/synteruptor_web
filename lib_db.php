@@ -5,6 +5,9 @@
 require_once("common.php");
 $dbdir = get_setting("db_dir");
 
+
+class DbException extends Exception {}
+
 /**********************************************************/
 // Check variable type (convert if necessary)
 function parseVal($dat) {
@@ -71,13 +74,16 @@ function get_db($version = null) {
 function get_db_connection($db) {
 	global $dbdir;
 	$dbh;
-        $dbpath = $db;
-        if (! preg_match("/\.sqlite$/i", $dbpath)) {
-            $dbpath = "$dbpath.sqlite";
-        }
-        error_log('['.date('YYYY-MM-dd HH:mm:ss').']'."Get db connection to $dbpath in $dbdir");
+	$dbpath = $db;
+	if (! preg_match("/\.sqlite$/i", $dbpath)) {
+		$dbpath = "$dbpath.sqlite";
+	}
+	if (!str_starts_with($db, "/")) {
+		$dbpath = "$dbdir/$dbpath";
+	}
+	error_log('['.date('YYYY-MM-dd HH:mm:ss').']'."Get db connection to $dbpath in $dbdir");
 	try {
-		$dbh = new PDO("sqlite:$dbdir/" . $dbpath, '', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		$dbh = new PDO("sqlite:$dbpath", '', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
 	catch(PDOException $ex) {
 		die_msg('Unable to connect to database.', $ex->getMessage());

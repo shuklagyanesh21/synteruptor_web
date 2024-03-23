@@ -3,6 +3,7 @@
 <?php if(!isset($_SESSION["blast_ids"])){$_SESSION["blast_ids"]=array();} ?>
 <?php
 require_once("upload_db_lib.php");
+require_once("lib_db.php");
 $uploaded_array = array();
 $errormsg = "";
 $nerrors = 0;
@@ -35,26 +36,40 @@ if (!isset($_FILES["new_db"])) {
 			$errormsg .= "<li>File is empty</li>";
 			$nerrors++;
 		} else {
-			# Just in case, to avoid collisions
-			$num = 1;
-			$new_id = $id;
-			$new_db_path = $final_db_path;
-			while(file_exists($final_db_path)) {
-				$new_id = $id . "_" . $num;
-				$new_db_path = str_replace("$id.sqlite", "$new_id.sqlite", $final_db_path);
-				$num++;
-				if ($num > 10) {
-					$errormsg .= "<li>ID collision detected.<li>";
-					$nerrors++;
-					break;
+			# Check there is data in the database
+			try {
+				$dbh = get_db_connection($tmp_name);
+				$info = get_database_data($dbh);
+				if (count($info) == 0) {
+					throw new DbException("Content of the db doesn't look right");
 				}
+			} catch(Exception $e) {
+				$errormsg .= "<li>Exception: ".$e->getMessage()."</li>";
+				$nerrors++;
 			}
+
 			if ($nerrors == 0) {
-				if ( move_uploaded_file($tmp_name, $new_db_path) ) {
-					$uploaded_array[] .= "Uploaded file '".$name."'.<br/>\n";
-				} else {
-					$errormsg .= "<li>Could not move uploaded file '".$tmp_name."' to '".$name."'<li>";
-					$nerrors++;
+				# Just in case, to avoid collisions
+				$num = 1;
+				$new_id = $id;
+				$new_db_path = $final_db_path;
+				while(file_exists($new_db_path)) {
+					$new_id = $id . "_" . $num;
+					$new_db_path = str_replace("$id.sqlite", "$new_id.sqlite", $final_db_path);
+					$num++;
+					if ($num > 10) {
+						$errormsg .= "<li>ID collision detected with $new_id in $new_db_path.<li>";
+						$nerrors++;
+						break;
+					}
+				}
+				if ($nerrors == 0) {
+					if ( move_uploaded_file($tmp_name, $new_db_path) ) {
+						$uploaded_array[] .= "Uploaded file '".$name."'.<br/>\n";
+					} else {
+						$errormsg .= "<li>Could not move uploaded file '".$tmp_name."' to '".$name."'<li>";
+						$nerrors++;
+					}
 				}
 			}
 		}
