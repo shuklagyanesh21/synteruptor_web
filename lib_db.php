@@ -75,13 +75,13 @@ function get_db_connection($db) {
 	global $dbdir;
 	$dbh;
 	$dbpath = $db;
-	if (! preg_match("/\.sqlite$/i", $dbpath)) {
-		$dbpath = "$dbpath.sqlite";
-	}
 	if (!str_starts_with($db, "/")) {
 		$dbpath = "$dbdir/$dbpath";
+		if (! preg_match("/\.sqlite$/i", $dbpath)) {
+			$dbpath = "$dbpath.sqlite";
+		}
 	}
-	error_log('['.date('YYYY-MM-dd HH:mm:ss').']'."Get db connection to $dbpath in $dbdir");
+	error_log("Get db connection to $dbpath");
 	try {
 		$dbh = new PDO("sqlite:$dbpath", '', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
@@ -89,6 +89,22 @@ function get_db_connection($db) {
 		die_msg('Unable to connect to database.', $ex->getMessage());
 	}
 	return $dbh;
+}
+
+function check_db($dbh) {
+	$tables = ["breaks_all", "breaks_ranking"];
+	foreach ($tables as $table) {
+		if (!has_table($dbh, $table)) {
+			return false;
+		}
+		$query = "SELECT * FROM $table LIMIT 1";
+		$data = get_db_data($dbh, $query);
+		if (count($data) != 1) {
+			error_log("Table $table has not data?");
+			return false;
+		}
+	}
+	return true;
 }
 
 function get_db_data($dbh, $query, $vals = array(), $key = '') {

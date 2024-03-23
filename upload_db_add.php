@@ -39,8 +39,7 @@ if (!isset($_FILES["new_db"])) {
 			# Check there is data in the database
 			try {
 				$dbh = get_db_connection($tmp_name);
-				$info = get_database_data($dbh);
-				if (count($info) == 0) {
+				if (!check_db($dbh)) {
 					throw new DbException("Content of the db doesn't look right");
 				}
 			} catch(Exception $e) {
