@@ -441,7 +441,7 @@ function draw_plot() {
 		.attr("class", "x label")
 		.attr("text-anchor", "middle")
 		.attr("x", (win_width - margin.left - margin.right) / 2 + margin.left)
-		.attr("y", win_height)
+		.attr("y", win_height - 4)
 		.text( cached_genomes.genomes[ get_par( 'sp1' ) ].name );
 	texts.append("text")
 		.attr("class", "y label")
