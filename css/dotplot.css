@@ -46,8 +46,8 @@ form {
 #rightcol {
 	position: absolute;
 	margin-left:calc(30% - 205px);
-	width: calc(79% - 205px);
-	height: 92%;
+	width: calc(68%);
+	height: calc(95% - 4em);
 }
 
 #start1, #end1 {
