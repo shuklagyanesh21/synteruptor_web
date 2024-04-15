@@ -78,6 +78,16 @@ var head_fields = [
 		'desc': 'Summary of the genes annotations in the break in genome 2'
 	},
 	{
+		'name': 'enzymes1',
+                'title': 'Enzyme count in Genomic&nbsp;island in&nbsp;genome&nbsp;1',
+		'desc': 'Number of enzymes in the break in genome 1'
+	},
+	{
+		'name': 'enzymes2',
+                'title': 'Enzyme count in Genomic&nbsp;island in&nbsp;genome&nbsp;2',
+		'desc': 'Number of enzymes in the break in genome 2'
+	},
+	{
 		'name': 'fromto1',
                 'title': 'Genes&nbsp;flanking&nbsp;the genomic&nbsp;island in&nbsp;genome&nbsp;1',
                 'desc': 'Genes forming the break in genome 1'
@@ -117,6 +127,8 @@ var default_sort_vals = {
 	'paralogs2': 0,
 	'delta_GC1': 0,
 	'delta_GC2': 0,
+	'enzymes1': 0,
+	'enzymes2': 0,
 };
 var sort_vals = get_custom_sort_vals();
 
@@ -247,4 +259,3 @@ function build_sort_table() {
 	}
 	$tab.append( $body );
 }
-
