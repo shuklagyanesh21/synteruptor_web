@@ -50,22 +50,31 @@ function to_antismash(data) {
 		"version": synteruptor_version,
 		"description": "Synteny breaks explorer",
 	};
-	records = [];
+	records = {};
 	for (var br of data) {
-		subregions = {
-			"label": "break_" + br["breakid"],
+		reg_name = br["gpart1"];
+		subregion = {
+			"label": "break_" + br["break_sum"].substring(0, 6),
 			"start": br["loc_start1"],
 			"end": br["loc_end1"],
+		};
+		if (!records[reg_name]) {
+			records[reg_name] = []
 		}
+		records[reg_name].push(subregion);
+	}
+
+	data_records = []
+	for (reg_name in records) {
 		record = {
-			"name": br["gpart1"],
-			"subregions": subregions,
-		}
-		records.push(record);
+			"name": reg_name,
+			"subregions": records[reg_name],
+		};
+		data_records.push(record);
 	}
 	json_data = {
 		"tool": tool,
-		"records": records,
+		"records": data_records,
 	}
 	return JSON.stringify(json_data, null, 4);
 }
