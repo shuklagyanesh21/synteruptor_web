@@ -18,6 +18,19 @@
 	background: #71FF71;
 }
 
+#trace_content {
+	text-align: left;
+	font-family: monospace;
+	border: 1px solid white;
+	background-color: #333;
+	color: white;
+	padding: 1em;
+}
+
+.boxtitle {
+	cursor: pointer;
+}
+
 .warning {
 	color: #C22;
 }

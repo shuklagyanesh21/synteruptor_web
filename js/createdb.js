@@ -109,6 +109,19 @@ function continuous_check(id) {
 				console.log("Error encountered: " + config.details);
 			}
 			// Don't continue!
+		} else if (config.status == "failed") {
+			if (config.details) {
+				console.log("Error encountered: " + config.details);
+			}
+			if (config.trace) {
+				trace_str = config.trace.replaceAll("\n", "<br />");
+				trace_box = $("<div />").attr("class", "subbox");
+				trace_title = $("<div />").attr("class", "boxtitle").text("Log trace...");
+				trace_content = $("<div />").attr("class", "boxcontent").attr("id", "trace_content").html(trace_str);
+				trace_box.append(trace_title).append(trace_content);
+				$('#building').append(trace_box);
+				hide_boxes();
+			}
 		} else {
 			window.setTimeout(function() {
 				continuous_check(id);
@@ -128,6 +141,14 @@ function finish(id) {
 		.append( $("<p />").text("The database is ready:") )
 		.append( summary );
 	console.log("Check over");
+}
+
+
+function hide_boxes() {
+	$(".boxcontent").hide();
+	$(".boxtitle").on('click', function() {
+		$(this).parent().find(".boxcontent").toggle();
+	});
 }
 
 jQuery(function() {
