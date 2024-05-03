@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<link rel="stylesheet" type="text/css" href="css/summary.css">
 		<script type="text/javascript" src="js/jquery/jquery-1.12.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery.storageapi.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
 		<script type="text/javascript" src="js/summary.js"></script>
 
@@ -41,6 +42,7 @@
 				<li><img src="css/ranking_32.png" alt="Show rankings icon"> = List of the genomic islands</li>
 				<li>"synt: xx%" indicates the level of synteny between two genomes (number of orthologs in synteny blocks / number of orthologs between two genomes).</li>
 				</ul>
+				<button id="clear_cache" type="button">Clear cache</button>
 				</div>
 			</div>
 		</div>

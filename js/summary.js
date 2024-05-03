@@ -1,3 +1,5 @@
+storage = $.localStorage;
+
 // Write the genomes table
 function genomes_table(data) {
 	if (data['outcome'] && data['outcome'] == false) {
@@ -174,22 +176,54 @@ function links(can_search) {
         
 }
 
+function get_cached_data( cname ) {
+	cached_data = storage.get( cname );
+	console.log("CACHED = ");
+}
+
 function create_table(pars) {
 	// Get all the genomes names for the menu
 	pars.type = 'genomes';
 	$.getJSON( urls.get_data, pars, function(data) {
 		genomes_table(data);
+
 		// Also get all the genomes orthologs numbers
 		pars.type = 'genomes_ortho';
 		loading_on();
-		console.log(pars);
-		console.log(urls.get_data);
-		$.getJSON( urls.get_data, pars, function(orthos) {
-			loading_off();
+
+		// Get from cache
+		cname = "summary_" + get_par("version") + "_numorthos";
+		if ( storage.isSet( cname )) {
+			orthos = storage.get( cname );
 			data.num_ortho = orthos.num_ortho;
-			console.log(data);
 			links_table(data);
-		});
+			loading_off();
+		} else {
+			console.log(pars);
+			console.log(urls.get_data);
+			$.getJSON( urls.get_data, pars, function(orthos) {
+				loading_off();
+				if (orthos['outcome'] == true) {
+					console.log("Can't get ortho data");
+				} else {
+					try {
+						storage.set( cname, orthos );
+					} catch (e) {
+						console.log("Data cache is full: purging.");
+						storage.removeAll();
+						try {
+							storage.set( cname, orthos );
+						} catch(e) {
+							console.log("Can't cache");
+						}
+					}
+					console.log("Data stored in " + cname);
+					data.num_ortho = orthos.num_ortho;
+					console.log(data);
+					links_table(data);
+				}
+			});
+		}
 	});
 }
 
@@ -204,5 +238,10 @@ $(function() {
 	} else {
 		$("#message").text("No database name provided.");
 	}
+	$('#clear_cache').click(function(event) {
+		event.preventDefault();
+		console.log("Clear cache...");
+		storage.removeAll();
+	});
 });
 
