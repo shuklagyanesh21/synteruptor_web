@@ -58,6 +58,7 @@ if (isset($_GET["id"])) {
 	$new_db = scan_sqlite();
 	if ($new_db) {
 		echo "Uploaded the database file to <a href=\"summary.php?version=$new_db\">$new_db</a>";
+		if(!in_array($new_db, $_SESSION["db_ids"])){$_SESSION["db_ids"][]=$new_db;}
 	} else {
 		echo '<form id="uploader" action="upload_db_add.php?id=' . $id . '" method="post" enctype="multipart/form-data">';
 		echo " <input type='file' name='new_db' />";
