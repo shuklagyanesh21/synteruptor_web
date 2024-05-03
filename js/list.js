@@ -174,8 +174,8 @@ function update() {
 function update_page(data) {
 	$('#message').empty();
 	$('#nbreaks').val("No");
-	$('#ranking').stickyTableHeaders('destroy');
-	$('#ranking').empty();
+	$('#list').stickyTableHeaders('destroy');
+	$('#list').empty();
 	if (!data) {
 		$error = $('<span />').text('Error: no data');
 		$('#message').append($error);
@@ -189,6 +189,7 @@ function update_page(data) {
 		update_permalink();
 		update_table( data );
 	}
+	$('#list').stickyTableHeaders();
 }
 
 function preprocess_data(data) {

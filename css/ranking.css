@@ -36,7 +36,7 @@ h2 {
 }
 
 #ranking_box{
-	overflow: scroll;
+	/* overflow: scroll; */
 	font-size: small;
 }
 
