@@ -8,8 +8,10 @@ h3 {
 
 #links_table {
 	display: block;
-    overflow-x: auto; 
+    	overflow-x: auto; 
 	max-width: fit-content;
+	overflow-y: auto;
+	max-height: 750px;
 }
 
 table a {
