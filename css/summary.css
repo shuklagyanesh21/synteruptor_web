@@ -7,9 +7,25 @@ h3 {
 }
 
 #links_table {
-	display: block;
+    display: none;
     overflow-x: auto; 
-	max-width: fit-content;
+    overflow-y: auto;
+    max-width: fit-content;
+    max-height: 750px;
+    border-collapse: collapse;
+}
+
+#links_table thead {
+    position: sticky;
+    top: 0;
+    z-index: 2; /* so that it stays above the table body */
+}
+
+#links_table th:first-child,
+#links_table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2; 
 }
 
 table a {
