@@ -7,7 +7,7 @@ h3 {
 }
 
 #links_table {
-    display: none;
+    display: block;
     overflow-x: auto; 
     overflow-y: auto;
     max-width: fit-content;
