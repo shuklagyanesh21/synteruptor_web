@@ -12,20 +12,45 @@ h3 {
     overflow-y: auto;
     max-width: fit-content;
     max-height: 750px;
-    border-collapse: collapse;
 }
 
+/* Sticky Headers */
 #links_table thead {
     position: sticky;
     top: 0;
-    z-index: 2; /* so that it stays above the table body */
+    z-index: 3;
 }
 
 #links_table th:first-child,
 #links_table td:first-child {
     position: sticky;
     left: 0;
-    z-index: 2; 
+    background-color: #FFD660;
+    z-index: 2;
+}
+
+/* Sticky Header Intersection */
+#links_table thead th:first-child {
+    z-index: 4;
+    background-color: #FFD660;
+}
+
+/* Highlighted Cell */
+#links_table td.hovered,
+#links_table th.hovered {
+    background-color: #FFEB9B !important;
+}
+
+/* Highlight Row Up to Hovered Cell */
+#links_table td.hovered-row,
+#links_table th.hovered-row {
+    background-color: #FFF7D4 !important;
+}
+
+/* Highlight Column Up to Hovered Cell */
+#links_table td.hovered-col,
+#links_table th.hovered-col {
+    background-color: #FFF7D4 !important;
 }
 
 table a {
