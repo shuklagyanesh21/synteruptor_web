@@ -245,3 +245,42 @@ $(function() {
 	});
 });
 
+$(function () {
+    const table = document.getElementById('links_table');
+
+    table.addEventListener('mouseover', (event) => {
+        const target = event.target;
+
+        if (target.tagName === 'TD' || target.tagName === 'TH') {
+            const row = target.parentElement;
+            const colIndex = target.cellIndex;
+
+            // Remove previous highlights
+            table.querySelectorAll('.hovered, .hovered-row, .hovered-col').forEach(cell => {
+                cell.classList.remove('hovered', 'hovered-row', 'hovered-col');
+            });
+
+            // Highlight Current Cell
+            target.classList.add('hovered');
+
+            // Highlight Row up to the current cell
+            for (let i = 0; i <= colIndex; i++) {
+                const cell = row.cells[i];
+                if (cell) cell.classList.add('hovered-row');
+            }
+
+            // Highlight Column up to the current cell
+            for (let i = 0; i <= row.rowIndex; i++) {
+                const cell = table.rows[i].cells[colIndex];
+                if (cell) cell.classList.add('hovered-col');
+            }
+        }
+    });
+
+    table.addEventListener('mouseout', () => {
+        // Clear all highlights when the mouse leaves the cell
+        table.querySelectorAll('.hovered, .hovered-row, .hovered-col').forEach(cell => {
+            cell.classList.remove('hovered', 'hovered-row', 'hovered-col');
+        });
+    });
+});
